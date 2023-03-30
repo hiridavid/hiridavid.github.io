@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
+
+    <title>DPQ Personality Test</title>
+</head>
+
+<body class="font-DEFAULT">
+
+    <!-- HEADER counts score & holds title -->
+    <header class="row align-items-center p-2 border-bottom border-secondary fixed-top shadow">
+        <img class="col" height="50px" src="src/logo-title.svg" alt="DPQ Personality Test">
+        <div class="col d-flex justify-content-end">
+            <img src="src/checkmark-checked.svg" alt="Score icon">
+            <span class="font-DEFAULT p-1" id="score">00/75</span>
+        </div>
+    </header>
+
+
+    <!-- MAIN sets page width for details, question cards and results -->
+    <section role="main" class="container-md">
+        <div class="row align-items-center p-2">
+            <img class="col-6" height="50px" src="src/logo-title.svg" alt="">
+        </div>
+
+        <!-- DETAILS provide context, credits, instructions & privacy policy to user -->
+        <details class="p-3 mt-3 mb-2">
+            <summary>Welcome!</summary>
+            <p>The <span class="highlight"><a href="https://gosling.psy.utexas.edu/scales-weve-developed/dog-personality-questionnaire-dpq/">DPQ Personality Test</a></span> (test) is an advanced behaviour test developed by Jones, A. C. in collaboration with Amanda Jones in 2009 as a Ph.D. Thesis in the University of Texas, Austin. This online form (form), based on the test, was developed by Hiri Dávid in 2023 in Örbottyán, Hungary. The form is a non-commercial modification of the test and can not accurately replace the original, only display a close approximation on a more user-friendly interface.</p>
+        </details>
+        <details class="p-3 mt-3 mb-2" open>
+            <summary>Instructions:</summary>
+            <p>Please <span class="highlight">TAP the slider</span> on each card to accurately represent how strongly you agree or disagree with the statement above regarding the subject of your form (yourself, or another person of choice).</p>
+            <p class="mb-0">Your <span class="highlight"><a href="#resultsBox">Results</a></span> are calculated automatically. We do not store any user data. Please screenshot your results (mobile) or download the webpage (Ctrl+S on PC) in order to save & share them.</p>
+        </details>
+
+
+        
+       <!-- QUESTION CARDS are where input is given. They can be generated using the VSCode Emmet template below.
+            TEMPLATE: (article.mb-2.pt-2.px-3.border-top.border-bottom.border-secondary>label[for='$']{$. Question.}+div.d-flex.justify-content-between.font-TITLE>p.text-start{Strongly<br>Disagree}+p.text-end{Strongly<br>Agree}^input:range[name='score-input'][id='$'][min='1'][max='7'][data-touched='']+hr) -->
+
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="1">1. Relaxed when greeting people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="1" min="1" max="7" data-touched=""> <!-- value attribute redundant in moz -->
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="2">2. Behaves aggressively if disturbed or moved when resting.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="2" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="3">3. Aloof (distant) or indifferent towards dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="3" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="4">4. Destructive.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="4" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="5">5. Behaves aggressively toward dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="5" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="6">6. Anxious.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="6" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="7">7. Loves to be praised.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="7" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="8">8. Responds aggressively when threatened by a dog (e.g., growled or lunged at, cornered).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="8" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="9">9. Bold.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="9" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="10">10. Lethargic (sluggish, apathetic).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="10" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="11">11. When off leash, comes immediately when called.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="11" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="12">12. Shy.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="12" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="13">13. Behaves aggressively towards unfamiliar people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="13" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="14">14. Will work to obtain an object or reward (e.g., ball, treat) that is hidden.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="14" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="15">15. Likes to chase squirrels, birds, or other small animals.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="15" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="16">16. Gets bored in play quickly.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="16" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="17">17. Behaves aggressively when restrained or handled (e.g., groomed).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="17" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="18">18. Quick to sneak out through open doors, gates.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="18" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="19">19. Confident.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="19" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="20">20. Dominant over dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="20" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="21">21. Avoids dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="21" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="22">22. Catches and kills animals (e.g., squirrels, rabbits).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="22" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="23">23. Behaves aggressively when a person (e.g., visitor, delivery person) approaches the house or yard.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="23" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="24">24. Easily startled by unexpected contact with objects (e.g., tripping, brushing against a door frame).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="24" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="25">25. Works at tasks (e.g., getting treats out of a kong or box, shredding toys) until entirely finished.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="25" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="26">26. Very excitable (sensitive, reactive) around cats.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="26" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="27">27. Boisterous (noisy, loud, talkative).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="27" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="28">28. Behaves fearfully during visits to the veterinarian.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="28" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="29">29. When walking on leash, tends to pull ahead.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="29" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="30">30. Behaves fearfully when near crowds of people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="30" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="31">31. Enjoys playing with toys.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="31" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="32">32. Easily upset when corrected, scolded, or punished.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="32" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="33">33. Friendly towards unfamiliar people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="33" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="34">34. Playful with dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="34" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="35">35. Seeks companionship from people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="35" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="36">36. Behaves submissively (e.g., avoids eye contact, licks lips) when greeting dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="36" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="37">37. Attentive to owner's actions and words.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="37" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="38">38. Adapts easily to new situations and environments.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="38" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="39">39. Likes to chase bicycles, joggers, and skateboarders.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="39" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="40">40. Curious.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="40" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="41">41. Guards food or treats from dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="41" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="42">42. Sensitive (and reactive) to pain.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="42" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="43">43. Behaves aggressively in response to perceived threats from people (e.g., being cornered, having collar reached for).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="43" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="44">44. Aloof (not friendly).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="44" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="45">45. Slow to learn new tricks or tasks.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="45" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="46">46. Interested in playing tug-o-war with people or dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="46" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="47">47. Behaves fearfully towards unfamiliar people.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="47" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="48">48. Very alert.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="48" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="49">49. Willingly shares toys with dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="49" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="50">50. Slow to respond to corrections.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="50" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="51">51. Behaves aggressively during visits to the veterinarian.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="51" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="52">52. Jumps up on (e.g., in play) and/or mounts dogs (outside appropriate mating).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="52" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="53">53. Seeks constant activity.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="53" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="54">54. Behaves fearfully towards children.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="54" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="55">55. Very excitable when visitors arrive.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="55" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="56">56. Leaves food or objects alone when told to do so.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="56" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="57">57. Has a tendency to attack (or attempt to attack) dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="57" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="58">58. Quick to recover after being startled or frightened.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="58" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="59">59. Retrieves objects (e.g., balls, toys, sticks).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="59" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="60">60. Friendly towards dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="60" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="61">61. Exhibits fearful behaviors when restrained.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="61" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="62">62. Aggressively guards coveted items (e.g., stolen item, treats, food bowl).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="62" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="63">63. Affectionate.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="63" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="64">64. Ignores commands.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="64" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="65">65. Behaves aggressively towards cats.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="65" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="66">66. Behaves fearfully when threatened by dogs (e.g., growled or lunged at, cornered).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="66" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="67">67. Follows people around.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="67" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="68">68. Shows aggression when nervous or fearful.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="68" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="69">69. Tends to be calm.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="69" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="70">70. Behaves fearfully towards dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="70" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="71">71. Able to focus on a task in a distracting situation (e.g., loud or busy places, around dogs).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="71" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="72">72. Very excitable around dogs.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="72" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="73">73. Behaves aggressively towards children.</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="73" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="74">74. Behaves fearfully when groomed (e.g., nails trimmed, brushed, bathed, ears cleaned).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="74" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+        <article class="mb-2 pt-2 px-3 border-top border-bottom border-secondary">
+            <label for="75">75. Assertive or pushy with dogs (e.g., if in a home with dogs, when greeting).</label>
+            <div class="d-flex justify-content-between font-TITLE">
+                <p class="text-start">Strongly<br>Disagree</p>
+                <p class="text-end">Strongly<br>Agree</p>
+            </div>
+            <input type="range" name="score-input" id="75" min="1" max="7" data-touched="">
+            <hr>
+        </article>
+
+
+        <!-- RESULTS is where any feedback & test results are displayed -->
+        <div id="resultsBox" class="row pt-2 pb-5 px-3">
+            <h3>Results</h3>
+            <p id="hint"><span></span><br>
+                Please touch the sliders to register an answer, even if it is in the correct position.<br>
+                <button type="button" class="btn btn-dark mt-2" style="color: var(--c-main)" onclick="highlight()">Highlight</button>
+                <button type="button" class="btn btn-outline-dark mt-2" style="color: var(--c-main)" onclick="touchAll()">Touch All</button>
+                <hr class="my-2">
+            </p>
+
+            <!-- TEMPLATE: (div.progress[role='progressbar'][aria-label=''][aria-valuenow='0'][aria-valuemin='0'][aria-valuemax='100']>div.progress-bar[style='width: 0%']+div.PROGRESS_LABEL>span+span{0%}) -->
+            <div id="progressBars" class="col-12 col-md-6 HIDDEN">
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fearfullness —</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of People:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Non-social Fear:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of Dogs:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Fear of Handling:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards People —</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>General Aggression:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Situational Aggression:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Activity &amp; Excitability —</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Excitability:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Playfullness:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Active Engagement:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Companionability:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Responsiveness to Training —</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Trainability:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Controllability:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress HEAD" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards Animals —</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Aggression towards Dogs:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Prey Drive:</span><span>0%</span>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-label="" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 50%"></div>
+                    <div class="PROGRESS_LABEL">
+                        <span>Dominance over Dogs:</span><span>0%</span>
+                    </div>
+                </div>
+            </div>
+            
+
+            <p id="results" class="col-12 HIDDEN">
+                Fearfullness — <br>
+                  Fear of People: <br>
+                  Non-social Fear: <br>
+                  Fear of Dogs: <br>
+                  Fear of Handling: <br>
+                <br>
+                Aggression towards People — <br>
+                  General Aggression: <br>
+                  Situational Aggression: <br>
+                <br>
+                Activity &amp; Excitability — <br>
+                  Excitability: <br>
+                  Playfullness: <br>
+                  Active Engagement: <br>
+                  Companionability: <br>
+                <br>
+                Responsiveness to Training — <br>
+                  Trainability: <br>
+                  Controllability: <br>
+                <br>
+                Aggression towards Animals — <br>
+                  Aggression towards Dogs: <br>
+                  Prey Drive: <br>
+                  Dominance over Dogs: <br>
+            </p>
+
+            <p id="placeholder">Your results will show here<br>after answering all questions.</p>
+
+            <div id="DISPLAY-SWITCH">
+                <button class="btn" onclick="convert(convertBtn)">Convert to Plain Text</button>
+            </div>
+            
+
+        </div> 
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

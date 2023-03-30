@@ -1,0 +1,362 @@
+:root{
+    --c-main: #F9AC39;
+    --c-main-subtle: #ffc36a;
+    --c-inv: #0653c6;
+    --c-inv-subtle: #042557;
+    --c-dark: #2C1B02;
+    --c-dark-subtle: #492d03;
+    --c-light: white;
+    --c-highlight: #855b00;
+
+    --thumb: 60px;
+    --track: 36px;
+    --thumb-url: url("src/slider-head-x60.png");
+
+    --res-h: 1.2rem;
+}
+
+/* DEFAULT latin */
+@font-face {
+    font-family: 'Hammersmith One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/hammersmithone/v17/qWcyB624q4L_C4jGQ9IK0O_dFlnrtREl.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.font-DEFAULT{
+    font-family: 'Hammersmith One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--c-dark-subtle);
+}
+
+/* TITLE latin */
+@font-face {
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/jomhuria/v18/Dxxp8j-TMXf-llKur1byOuA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.font-TITLE{
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 18px;    /* line spacing, 3/4 of font size */
+    color: var(--c-dark);
+}
+
+@media screen and (min-width: 992px) {
+    .font-TITLE{
+        font-size: 36px;
+        line-height: 27px;    /* line spacing */
+    }
+    .font-DEFAULT{
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+    }
+}
+
+/* LOGO latin */
+@font-face {
+    font-family: 'Henny Penny';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/hennypenny/v17/wXKvE3UZookzsxz_kjGSfPQtvXI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.font-LOGO{
+    font-family: 'Henny Penny';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    color: #FFFFFF;
+    border: 1px solid #503C1F;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body{
+    background: var(--c-main);
+}
+
+header{
+    background:var(--c-light);
+    max-height: 300px;
+}
+
+.highlight{
+    font-weight: bold;
+    color: var(--c-main);
+}
+
+span>a{
+    text-decoration: underline;
+    color: var(--c-main);
+}
+
+span>a:hover{
+    color: var(--c-inv);
+}
+
+details{
+    background: snow;
+}
+
+details[open] summary ~ * {
+    animation: sweep .5s ease-out;
+}
+  
+@keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px; margin-right: 10px}
+    100%  {opacity: 1; margin-left: 0; margin-right: 0}
+}
+
+article{
+    background:var(--c-light);
+    position: relative;
+    padding-bottom: 5.5rem;
+
+    transition: box-shadow 0.3s ease;
+}
+
+article>label{
+    margin-bottom: 1rem;
+}
+
+article>hr{
+    border: none;
+    width: calc(90% + var(--track) - var(--thumb));
+    height: var(--track);
+
+    position: absolute;
+    bottom: 2rem;
+
+    left: 0; 
+    right: 0;
+    margin: 0 auto 6px auto;
+
+    border-radius: 18px;
+    background:linear-gradient(to right, var(--c-dark), var(--c-main));
+    opacity:1;
+    
+    pointer-events: none;
+    z-index: 0;
+}
+
+article>*{
+    width:100%;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: var(--track);
+
+    left: 0; 
+    right: 0;
+    margin: 14px auto 14px auto;
+    
+    border-radius: 18px;
+    background: none;
+    opacity: 1;
+    
+    touch-action: none;
+    position: absolute;
+    z-index: 1;
+
+    cursor: pointer;
+}
+  
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    height: var(--thumb);
+    width: var(--thumb);
+    border-radius: 50%;
+    background: var(--thumb-url);
+    /* background-color: rgba(249, 172, 57, 0.29); */
+    cursor: ew-resize;
+}
+
+input[type="range"]::-moz-range-thumb {
+    appearance: none;
+    height: var(--thumb);
+    width: var(--thumb);
+    border-radius: 50%;
+    background: var(--thumb-url);
+    /* background-color: rgba(249, 172, 57, 0.29); */
+    border: none;
+    cursor: ew-resize;
+    position: absolute;
+    z-index: 1;
+}
+
+/*
+input[type=range]::-webkit-slider-runnable-track  {
+    appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+} */
+
+#resultsBox{
+    background: var(--c-light);
+}
+
+#hint{
+    display: none;
+    font-style:italic;
+}
+
+#hint>span{
+    color: var(--c-main);
+}
+
+#results{
+    margin-top: -1.2rem;
+}
+
+#progressBars{
+    margin-top: calc(-1*(1rem + var(--res-h) * 1.5 * .2));
+    margin-bottom: calc(2rem - 23.607px);
+}
+
+.highlighted{
+    box-shadow: inset 0px 0px 10px 10px var(--c-inv);
+    transition: box-shadow .6s .3s ease;
+}
+
+.progress{
+    display: grid;
+}
+
+.progress-bar{
+    grid-column: 1; 
+    grid-row: 1;
+}
+
+.PROGRESS_LABEL{
+    width: 100%;
+    background-color: transparent;
+    grid-column: 1;
+    grid-row: 1;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress{
+    height: var(--res-h);
+    margin-bottom: calc(.5rem + var(--res-h) * .2);
+    margin-left: 1rem;
+
+    background-color: var(--c-dark-subtle);
+    border: 1px solid var(--c-dark);
+    border-radius: calc(var(--res-h) * .5);
+    box-shadow: inset 0px 0px 0px 1px var(--c-light);
+}
+
+.progress.HEAD{
+    height: calc(var(--res-h) * 1.5);
+    margin-top: calc(1rem + var(--res-h) * 1.5 * .2);
+    margin-left: 0;
+
+    
+    background-color: var(--c-dark-subtle);
+    border: 1px solid var(--c-dark);
+    border-radius: calc(var(--res-h) * 1.5 * .5);
+    box-shadow: inset 0px 0px 0px 1px var(--c-light);
+}
+
+.progress>.progress-bar{
+    margin-top: -1.5px;
+    background-color: var(--c-main-subtle);
+    border-radius: calc(var(--res-h) * .5);
+    /* box-shadow: inset 2px -5px 1px -2px var(--c-highlight); */
+}
+
+.progress.HEAD>.progress-bar{
+    background-color: var(--c-main);
+    border-radius: calc(var(--res-h) * 1.5 * .5);
+    box-shadow: inset 4px -6px 2px -2px var(--c-highlight);
+}
+
+.PROGRESS_LABEL>span{
+    line-height: var(--res-h);
+    padding-left: calc(var(--res-h) * .4);
+    padding-right: calc(var(--res-h) * .4);
+
+    color:var(--c-light);
+    /* -webkit-text-stroke: 1px black; */
+    text-shadow:
+    -1px -1px 0 var(--c-dark),
+     0   -1px 0 var(--c-dark),
+     1px -1px 0 var(--c-dark),
+     1px  0   0 var(--c-dark),
+     1px  1px 0 var(--c-dark),
+     0    1px 0 var(--c-dark),
+    -1px  1px 0 var(--c-dark),
+    -1px  0   0 var(--c-dark);
+}
+
+.progress.HEAD>.PROGRESS_LABEL>span{
+    line-height: calc(var(--res-h) * (1.5 + 0.05));
+
+    font-family: 'Hammersmith One';
+    font-size: 14px;
+}
+
+.HIDDEN{
+    position: absolute;
+    pointer-events: none;
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+}
+
+#results, #progressBars{
+    transition: all .8s ease-out;
+}
+
+#DISPLAY-SWITCH{
+    display:flex;
+    justify-content: center;
+}
+
+#DISPLAY-SWITCH>button{
+    display:none;
+    border-radius: 1.185rem;
+    color:var(--c-dark-subtle);
+}
+
+#DISPLAY-SWITCH>button:hover{
+    color: var(--c-dark);
+    background-color:transparent;
+    border: solid 1px var(--c-dark);
+}
+
+#DISPLAY-SWITCH>button:active{
+    color: var(--c-dark-subtle);
+    box-shadow: inset 0px 0px 8px 6px var(--c-main-subtle);
+    border: solid 1px var(--c-dark);
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+
+summary{
+    user-select: none;
+}
